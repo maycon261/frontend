@@ -1,0 +1,57 @@
+<ion-header>
+<ion-navbar>
+  <ion-title>
+    Exemplos de CRUD
+  </ion-title>
+</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+<h1 text-center>Exemplo de INSERT</h1>
+
+<ion-list>
+  <ion-item>
+    <ion-label stacked>Nome</ion-label>
+    <ion-input type="text" name="nome" [(ngModel)]="myCliente.nome_cliente"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>CPF</ion-label>
+    <ion-input type="text" name="cpf" [(ngModel)]="myCliente.cpf"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Telefone</ion-label>
+    <ion-input type="text" name="telefone" [(ngModel)]="myCliente.telefone"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Endereço</ion-label>
+    <ion-input type="text" name="endereco" [(ngModel)]="myCliente.endereco"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Estado</ion-label>
+    <ion-input type="text" name="estado" [(ngModel)]="myCliente.estado"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Municipio</ion-label>
+    <ion-input type="text" name="municipio" [(ngModel)]="myCliente.municipio"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Email</ion-label>
+    <ion-input type="text" name="email" [(ngModel)]="myCliente.email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Senha</ion-label>
+    <ion-input type="password" name="senha" [(ngModel)]="myCliente.senha"></ion-input>
+  </ion-item>
+</ion-list>
+
+<button ion-button block (click)="createUser()" color="primary">Criar Usuário</button>
+
+</ion-content>

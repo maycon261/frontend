@@ -5,10 +5,10 @@ webpackJsonp([3],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateUserPageModule", function() { return CreateUserPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(291);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__create_user__ = __webpack_require__(291);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var LoginPageModule = (function () {
-    function LoginPageModule() {
+var CreateUserPageModule = (function () {
+    function CreateUserPageModule() {
     }
-    LoginPageModule = __decorate([
+    CreateUserPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */],
+                __WEBPACK_IMPORTED_MODULE_2__create_user__["a" /* CreateUserPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__create_user__["a" /* CreateUserPage */]),
             ],
         })
-    ], LoginPageModule);
-    return LoginPageModule;
+    ], CreateUserPageModule);
+    return CreateUserPageModule;
 }());
 
-//# sourceMappingURL=login.module.js.map
+//# sourceMappingURL=create-user.module.js.map
 
 /***/ }),
 
@@ -42,8 +42,8 @@ var LoginPageModule = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_users_users__ = __webpack_require__(199);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateUserPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_users_users__ = __webpack_require__(100);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(51);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -58,44 +58,41 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var LoginPage = (function () {
-    function LoginPage(navCtrl, navParams, toast, userProvider) {
+var CreateUserPage = (function () {
+    function CreateUserPage(navCtrl, navParams, toast, userProvider) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.toast = toast;
         this.userProvider = userProvider;
-        this.MyCliente = { email: "", senha: "" };
-        this.MyCliente = {};
+        this.myCliente = {};
     }
-    LoginPage.prototype.validalogin = function () {
+    CreateUserPage.prototype.createUser = function () {
         var _this = this;
-        this.userProvider.login(this.MyCliente.email, this.MyCliente.senha)
+        this.userProvider.insert(this.myCliente.cpf, this.myCliente.nome_cliente, this.myCliente.endereco, this.myCliente.estado, this.myCliente.municipio, this.myCliente.telefone, this.myCliente.email, this.myCliente.senha)
             .subscribe(function (data) {
-            console.log(data);
-            //this.MyCliente = data;
             if (data == true) {
-                _this.toast.create({ message: "Usuário logado com sucesso", position: 'botton', duration: 3000 }).present();
+                _this.toast.create({ message: "Cliente inserido com sucesso", position: 'botton', duration: 3000 }).present();
                 _this.navCtrl.push('UserListPage');
             }
             else {
-                _this.toast.create({ message: "Usuário Invalido tente novamente", position: 'botton', duration: 3000 }).present();
+                _this.toast.create({ message: "Não foi possivel inserir  tente novamente", position: 'botton', duration: 3000 }).present();
             }
         }, function (err) {
             console.log(err);
-            _this.toast.create({ message: "Erro ao efetuar login. Erro: " + err, position: 'botton', duration: 3000 }).present();
+            _this.toast.create({ message: "Erro ao inserir cliente .Erro: " + err, position: 'botton', duration: 3000 }).present();
         });
     };
-    LoginPage = __decorate([
+    CreateUserPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"D:\cordova-apps\ecommercFrontEnd\src\pages\login\login.html"*/'<ion-header>\n<ion-navbar>\n  <ion-title>\n    Ionic Rest Api Example\n  </ion-title>\n</ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n<h1 text-center>Exemplo de criação de conta</h1>\n\n<ion-list>  \n  <ion-item>\n    <ion-label stacked>Email</ion-label>\n    <ion-input type="text" name="email" [(ngModel)]="MyCliente.email"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Senha</ion-label>\n    <ion-input type="password" name="senha" [(ngModel)]="MyCliente.senha"></ion-input>\n  </ion-item>\n</ion-list>\n\n<button ion-button block (click)="validalogin()" color="primary">Login page</button>\n\n</ion-content>'/*ion-inline-end:"D:\cordova-apps\ecommercFrontEnd\src\pages\login\login.html"*/,
+            selector: 'page-create-user',template:/*ion-inline-start:"D:\cordova-apps\ecommercFrontEnd\src\pages\create-user\create-user.html"*/'<ion-header>\n<ion-navbar>\n  <ion-title>\n    Exemplos de CRUD\n  </ion-title>\n</ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n<h1 text-center>Exemplo de INSERT</h1>\n\n<ion-list>\n  <ion-item>\n    <ion-label stacked>Nome</ion-label>\n    <ion-input type="text" name="nome" [(ngModel)]="myCliente.nome_cliente"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>CPF</ion-label>\n    <ion-input type="text" name="cpf" [(ngModel)]="myCliente.cpf"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Telefone</ion-label>\n    <ion-input type="text" name="telefone" [(ngModel)]="myCliente.telefone"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Endereço</ion-label>\n    <ion-input type="text" name="endereco" [(ngModel)]="myCliente.endereco"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Estado</ion-label>\n    <ion-input type="text" name="estado" [(ngModel)]="myCliente.estado"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Municipio</ion-label>\n    <ion-input type="text" name="municipio" [(ngModel)]="myCliente.municipio"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Email</ion-label>\n    <ion-input type="text" name="email" [(ngModel)]="myCliente.email"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Senha</ion-label>\n    <ion-input type="password" name="senha" [(ngModel)]="myCliente.senha"></ion-input>\n  </ion-item>\n</ion-list>\n\n<button ion-button block (click)="createUser()" color="primary">Criar Usuário</button>\n\n</ion-content>'/*ion-inline-end:"D:\cordova-apps\ecommercFrontEnd\src\pages\create-user\create-user.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* ToastController */], __WEBPACK_IMPORTED_MODULE_0__providers_users_users__["a" /* UsersProvider */]])
-    ], LoginPage);
-    return LoginPage;
+    ], CreateUserPage);
+    return CreateUserPage;
 }());
 
-//# sourceMappingURL=login.js.map
+//# sourceMappingURL=create-user.js.map
 
 /***/ })
 

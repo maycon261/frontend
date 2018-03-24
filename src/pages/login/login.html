@@ -1,0 +1,29 @@
+<ion-header>
+<ion-navbar>
+  <ion-title>
+    Ionic Rest Api Example
+  </ion-title>
+</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+<h1 text-center>Por favor insira seus dados de acesso</h1>
+
+<ion-list>  
+  <ion-item>
+    <ion-label stacked>Email</ion-label>
+    <ion-input type="text" name="email" [(ngModel)]="MyCliente.email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Senha</ion-label>
+    <ion-input type="password" name="senha" [(ngModel)]="MyCliente.senha"></ion-input>
+  </ion-item>
+</ion-list>
+
+<button ion-button block (click)="validalogin()" color="primary">Entrar</button>
+
+<button ion-button block (click)="openCreateUser()">Primeiro Acesso</button>
+
+</ion-content>

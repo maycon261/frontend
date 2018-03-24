@@ -1,6 +1,6 @@
 webpackJsonp([1],{
 
-/***/ 288:
+/***/ 289:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43,7 +43,7 @@ var UserEditPageModule = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserEditPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_users_users__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_users_users__ = __webpack_require__(100);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(51);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -87,7 +87,7 @@ var UserEditPage = (function () {
     };
     UserEditPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'page-user-edit',template:/*ion-inline-start:"D:\cordova-apps\ecommercFrontEnd\src\pages\user-edit\user-edit.html"*/'<ion-header>\n<ion-navbar>\n  <ion-title>\n    Exemplos de CRUD\n  </ion-title>\n</ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n<h1 text-center>Exemplo de UPDATE</h1>\n\n<ion-list>\n  <ion-item>\n    <ion-label stacked>Nome</ion-label>\n    <ion-input type="text" name="nome" [(ngModel)]="MySingleCliente.nome_cliente"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>CPF</ion-label>\n    <ion-input type="text" name="cpf" [(ngModel)]="MySingleCliente.cpf"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Telefone</ion-label>\n    <ion-input type="text" name="telefone" [(ngModel)]="MySingleCliente.telefone"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Endereço</ion-label>\n    <ion-input type="text" name="endereco" [(ngModel)]="MySingleCliente.endereco"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Estado</ion-label>\n    <ion-input type="text" name="estado" [(ngModel)]="MySingleCliente.estado"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Municipio</ion-label>\n    <ion-input type="text" name="municipio" [(ngModel)]="MySingleCliente.municipio"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Email</ion-label>\n    <ion-input type="text" name="email" [(ngModel)]="MySingleCliente.email"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Senha</ion-label>\n    <ion-input type="password" name="senha" [(ngModel)]="MySingleCliente.senha"></ion-input>\n  </ion-item>\n</ion-list>\n\n<button ion-button block (click)="updateClient()" color="primary">Criar Usuário</button>\n\n</ion-content>'/*ion-inline-end:"D:\cordova-apps\ecommercFrontEnd\src\pages\user-edit\user-edit.html"*/,
+            selector: 'page-user-edit',template:/*ion-inline-start:"D:\cordova-apps\ecommercFrontEnd\src\pages\user-edit\user-edit.html"*/'<ion-header>\n<ion-navbar>\n  <ion-title>\n    Exemplos de CRUD\n  </ion-title>\n</ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n<h1 text-center>Exemplo de UPDATE</h1>\n\n<ion-list>\n  <ion-item>\n    <ion-label stacked>Nome</ion-label>\n    <ion-input type="text" name="nome" [(ngModel)]="MySingleCliente.nome_cliente"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>CPF</ion-label>\n    <ion-input disabled="true" type="text" name="cpf" [(ngModel)]="MySingleCliente.cpf"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Telefone</ion-label>\n    <ion-input type="text" name="telefone" [(ngModel)]="MySingleCliente.telefone"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Endereço</ion-label>\n    <ion-input type="text" name="endereco" [(ngModel)]="MySingleCliente.endereco"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Estado</ion-label>\n    <ion-input type="text" name="estado" [(ngModel)]="MySingleCliente.estado"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Municipio</ion-label>\n    <ion-input type="text" name="municipio" [(ngModel)]="MySingleCliente.municipio"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Email</ion-label>\n    <ion-input type="text" name="email" [(ngModel)]="MySingleCliente.email"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Senha</ion-label>\n    <ion-input type="password" name="senha" [(ngModel)]="MySingleCliente.senha"></ion-input>\n  </ion-item>\n</ion-list>\n\n<button ion-button block (click)="updateClient()" color="primary">Atualizar Cadastro</button>\n\n</ion-content>'/*ion-inline-end:"D:\cordova-apps\ecommercFrontEnd\src\pages\user-edit\user-edit.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* ToastController */], __WEBPACK_IMPORTED_MODULE_0__providers_users_users__["a" /* UsersProvider */]])

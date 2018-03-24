@@ -1,0 +1,57 @@
+<ion-header>
+<ion-navbar>
+  <ion-title>
+    Exemplos de CRUD
+  </ion-title>
+</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+<h1 text-center>Exemplo de UPDATE</h1>
+
+<ion-list>
+  <ion-item>
+    <ion-label stacked>Nome</ion-label>
+    <ion-input type="text" name="nome" [(ngModel)]="MySingleCliente.nome_cliente"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>CPF</ion-label>
+    <ion-input disabled="true" type="text" name="cpf" [(ngModel)]="MySingleCliente.cpf"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Telefone</ion-label>
+    <ion-input type="text" name="telefone" [(ngModel)]="MySingleCliente.telefone"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Endereço</ion-label>
+    <ion-input type="text" name="endereco" [(ngModel)]="MySingleCliente.endereco"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Estado</ion-label>
+    <ion-input type="text" name="estado" [(ngModel)]="MySingleCliente.estado"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Municipio</ion-label>
+    <ion-input type="text" name="municipio" [(ngModel)]="MySingleCliente.municipio"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Email</ion-label>
+    <ion-input type="text" name="email" [(ngModel)]="MySingleCliente.email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Senha</ion-label>
+    <ion-input type="password" name="senha" [(ngModel)]="MySingleCliente.senha"></ion-input>
+  </ion-item>
+</ion-list>
+
+<button ion-button block (click)="updateClient()" color="primary">Atualizar Cadastro</button>
+
+</ion-content>
