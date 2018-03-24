@@ -129,7 +129,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var UsersProvider = (function () {
     function UsersProvider(http) {
         this.http = http;
-        this.API_URL = 'http://localhost:8080/api/';
+        this.API_URL = 'https://ecommerc-pucminas-rest.herokuapp.com/api/';
     }
     UsersProvider.prototype.createUser = function (id, nome_cliente, endereco, estado, municipio, telefone, email, senha) {
         var _this = this;

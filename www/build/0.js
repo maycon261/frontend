@@ -69,13 +69,14 @@ var UserListPage = (function () {
         this.userProvider = userProvider;
         this.MyCliente = [];
         this.MySingleCliente = {};
+        //this.initializeItems();  
     }
     UserListPage.prototype.ngOnInit = function () {
         this.getTodosUsuarios();
     };
     UserListPage.prototype.ionViewDidEnter = function () {
-        this.MyCliente = [];
-        this.getTodosUsuarios();
+        //this.getTodosUsuarios();
+        this.initializeItems();
     };
     UserListPage.prototype.getTodosUsuarios = function () {
         var _this = this;
@@ -85,6 +86,21 @@ var UserListPage = (function () {
         }, function (err) {
             console.log(err);
         });
+    };
+    UserListPage.prototype.initializeItems = function () {
+        this.clientes = this.MyCliente;
+    };
+    UserListPage.prototype.getItems = function (ev) {
+        // Reset items back to all of the items
+        this.initializeItems();
+        // set val to the value of the searchbar
+        var val = ev.target.value;
+        // if the value is an empty string don't filter the items
+        if (val && val.trim() != '') {
+            this.clientes = this.clientes.filter(function (cliente) {
+                return (cliente.nome_cliente.toLowerCase().indexOf(val.toLowerCase()) > -1);
+            });
+        }
     };
     UserListPage.prototype.openUser = function (id) {
         var _this = this;
@@ -127,12 +143,12 @@ var UserListPage = (function () {
     };
     UserListPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({
-            selector: 'page-user-list',template:/*ion-inline-start:"D:\cordova-apps\ecommercFrontEnd\src\pages\user-list\user-list.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Clientes\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <ion-list>\n    <ion-item-sliding *ngFor="let mycliente of MyCliente">\n      <ion-item (click)="openUser(mycliente.cpf)">       \n        <h2>{{ mycliente.nome_cliente}}</h2>\n      </ion-item>\n\n      <ion-item-options side="left">\n        <button ion-button color="primary" (click)="openEditUser(mycliente.cpf)">\n            <ion-icon name="create"></ion-icon>\n            Editar\n          </button>\n        <button ion-button color="danger" (click)="deleteUser(mycliente)">\n            <ion-icon name="trash"></ion-icon>\n            Excluir\n          </button>\n      </ion-item-options>\n    </ion-item-sliding>\n\n  </ion-list>\n\n  \n\n  <ion-fab right bottom>\n    <button ion-fab color="light" (click)="openCreateUser()"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>'/*ion-inline-end:"D:\cordova-apps\ecommercFrontEnd\src\pages\user-list\user-list.html"*/,
+            selector: 'page-user-list',template:/*ion-inline-start:"D:\cordova-apps\ecommercFrontEnd\src\pages\user-list\user-list.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Clientes\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n    <ion-searchbar      \n    (ionInput)="getItems($event)">    \n  </ion-searchbar>\n\n  <ion-scroll scrollX="true">\n    </ion-scroll>\n\n\n  <ion-list>\n    <ion-item-sliding *ngFor="let mycliente of clientes">\n      <ion-item (click)="openUser(mycliente.cpf)">       \n        <h2>{{ mycliente.nome_cliente}}</h2>\n      </ion-item>\n\n      <ion-item-options side="left">\n        <button ion-button color="primary" (click)="openEditUser(mycliente.cpf)">\n            <ion-icon name="create"></ion-icon>\n            Editar\n          </button>\n        <button ion-button color="danger" (click)="deleteUser(mycliente)">\n            <ion-icon name="trash"></ion-icon>\n            Excluir\n          </button>\n      </ion-item-options>\n    </ion-item-sliding>\n\n  </ion-list>\n\n  \n\n  <ion-fab right bottom>\n    <button ion-fab color="light" (click)="openCreateUser()"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>'/*ion-inline-end:"D:\cordova-apps\ecommercFrontEnd\src\pages\user-list\user-list.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* ToastController */], __WEBPACK_IMPORTED_MODULE_0__providers_users_users__["a" /* UsersProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* ToastController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__providers_users_users__["a" /* UsersProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__providers_users_users__["a" /* UsersProvider */]) === "function" && _d || Object])
     ], UserListPage);
     return UserListPage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=user-list.js.map
