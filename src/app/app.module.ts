@@ -12,12 +12,17 @@ import { HomePage } from '../pages/home/home';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersProvider } from '../providers/users/users';
 
+/**
+ * Carrega os modulos necessarios para utilizacao do app
+ *  
+ *
+ * @author maycon
+ */
 @NgModule({
   declarations: [
     MyApp,
     LoginPage,
     
-    //HomePage
   ],
   imports: [
     BrowserModule,

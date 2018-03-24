@@ -3,7 +3,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController  } from 'ionic-angular';
 import { Client } from './../../app/cliente';
 
-
+/**
+ * Criacao de usuarios
+ */
 @IonicPage()
 @Component({
   selector: 'page-create-user',
@@ -20,6 +22,10 @@ export class CreateUserPage {
       
   }
 
+  /** 
+   * enviamos ao endpoint os dados para insercao
+   * @returns boolean e tratamos
+  */
   createUser(){
     this.userProvider.insert(
       this.myCliente.cpf,this.myCliente.nome_cliente,this.myCliente.endereco,

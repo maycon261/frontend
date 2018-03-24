@@ -7,6 +7,11 @@ import { Client } from './../../app/cliente';
 
 
 
+/** 
+ * Lista os clientes cadastrados
+ * Podendo fazer o CRUD dos clientes
+ * @author maycon
+*/
 @IonicPage()
 @Component({
   selector: 'page-user-list',
@@ -33,10 +38,15 @@ export class UserListPage implements OnInit {
    }
 
  
-  ionViewDidEnter() {
+  /**depois que a tela carrega, solicita os cliente via endpoint */
+   ionViewDidEnter() {
     this.getTodosUsuarios(); 
   } 
 
+  /**retorna todos clientes, utilizando nosso servico
+   * no subscribe injetamos o resultado do GET no nosso array interno 
+   * para popular a lista de cliente
+   */
   getTodosUsuarios(){
     this.userProvider.getTodosUsuarios()
       .subscribe(data =>{        
@@ -48,6 +58,13 @@ export class UserListPage implements OnInit {
   }  
 
   
+  /**
+   * com a lista preenchida
+   * ao clicar em um cliente 
+   * o app redireciona para tela de dados 
+   * exibindo os dados do cliente selecionado anteriormente
+   * @param id 
+   */
   openUser(id: string){
     this.userProvider.get(id)
     .subscribe(data =>{      
@@ -60,10 +77,18 @@ export class UserListPage implements OnInit {
     });   
   } 
 
+  /**ao clicar no + app redireciona para tela de cadastrado de usuario */
   openCreateUser(){
     this.navCtrl.push('CreateUserPage');
   }
 
+  /**
+   * com a lista preenchida
+   * ao clicar em um cliente 
+   * e arrastarmos para direita e clicarmos na opcao EDITAR
+   * o app redireciona para a tela de alteracao 
+   * @param id 
+   */
   openEditUser(id: string){
     this.userProvider.get(id)
     .subscribe(data =>{      
@@ -77,6 +102,13 @@ export class UserListPage implements OnInit {
     });  
   }
 
+  /**
+   * com a lista preenchida
+   * ao clicar em um cliente 
+   * e arrastarmos para direita e clicarmos na opcao EXCLUIR
+   * o app deleta o cliente
+   * @param id 
+   */
   deleteUser(cliente: Client) {
     this.userProvider.remove(cliente)
     .subscribe(data =>{

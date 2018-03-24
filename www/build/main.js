@@ -27,11 +27,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+/**
+ * Representa um servico de consumo HTTP/REST
+ *
+ * @author maycon
+ */
 var UsersProvider = (function () {
     function UsersProvider(http) {
         this.http = http;
+        /**
+         * url do servico rest
+         */
         this.API_URL = 'https://ecommerc-pucminas-rest.herokuapp.com/api/';
     }
+    /**
+     * metodo cria um usuario e envia o endpoint
+     * via POST
+     * @author maycon
+     * @returns e tradado no obj interceptador
+     */
     UsersProvider.prototype.createUser = function (id, nome_cliente, endereco, estado, municipio, telefone, email, senha) {
         var _this = this;
         return new Promise(function (resolve, reject) {
@@ -49,34 +63,83 @@ var UsersProvider = (function () {
             });
         });
     };
+    /**
+     * metodo envia os parametros ao endpoint via POST
+     * @param email
+     * @param senha
+     * @returns e tradado no obj interceptador
+     */
     UsersProvider.prototype.login = function (email, senha) {
         var url = this.API_URL + 'login';
         return this.http.post(url, { email: email, senha: senha });
     };
+    /**
+     * metodo solicita todos os clientes da base ao endpoint via GET
+     * @returns lista de clientes tradado no obj interceptador
+     */
     UsersProvider.prototype.getTodosUsuarios = function () {
         var url = this.API_URL + 'clientes';
         return this.http
             .get(url);
     };
+    /**
+       * metodo solicita um  cliente da base ao endpoint via GET
+       * @param cpf do cliente
+       * @returns o cliente e tradado no obj interceptador
+       */
     UsersProvider.prototype.get = function (id) {
         var url = this.API_URL + 'cliente/' + id;
         return this.http.get(url);
     };
+    /**
+     * Insere um cliente via POST
+     * @param cpf
+     * @param nome_cliente
+     * @param endereco
+     * @param estado
+     * @param municipio
+     * @param telefone
+     * @param email
+     * @param senha
+     * @returns boolean e tratrado no obj interceptador
+     */
     UsersProvider.prototype.insert = function (cpf, nome_cliente, endereco, estado, municipio, telefone, email, senha) {
         var url = this.API_URL + 'cliente';
         var expandedHeaders = this.prepareHeader(null);
         return this.http.post(url, { cpf: cpf, nome_cliente: nome_cliente, endereco: endereco, estado: estado, municipio: municipio, telefone: telefone, email: email, senha: senha }, expandedHeaders);
     };
+    /**
+     * Atualiza um cliente via PATCH
+     * o endpoint tratara quais os campos que serao atualizado
+     * @param cpf
+     * @param nome_cliente
+     * @param endereco
+     * @param estado
+     * @param municipio
+     * @param telefone
+     * @param email
+     * @param senha
+     * @returns boolean e tratrado no obj interceptador
+     */
     UsersProvider.prototype.update = function (cpf, nome_cliente, endereco, estado, municipio, telefone, email, senha) {
         var url = this.API_URL + 'cliente/' + cpf;
         var expandedHeaders = this.prepareHeader(null);
         return this.http.patch(url, { nome_cliente: nome_cliente, endereco: endereco, estado: estado, municipio: municipio, telefone: telefone, email: email, senha: senha }, expandedHeaders);
     };
+    /**
+     * delete um cliente
+     * @param cliente
+     * @returns boolean e tratrado no obj interceptador
+     */
     UsersProvider.prototype.remove = function (cliente) {
         var url = this.API_URL + 'cliente/' + cliente.cpf;
         var expandedHeaders = this.prepareHeader(null);
         return this.http.delete(url, expandedHeaders);
     };
+    /**
+     * cria um Header padrao
+     * @param headers
+     */
     UsersProvider.prototype.prepareHeader = function (headers) {
         headers = headers || new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["c" /* HttpHeaders */]();
         headers = headers.set('Content-Type', 'application/json');
@@ -88,9 +151,10 @@ var UsersProvider = (function () {
     };
     UsersProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
     ], UsersProvider);
     return UsersProvider;
+    var _a;
 }());
 
 //# sourceMappingURL=users.js.map
@@ -117,6 +181,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+/**Resposavel em validar o login no app */
 var LoginPage = (function () {
     function LoginPage(navCtrl, navParams, toast, userProvider) {
         this.navCtrl = navCtrl;
@@ -126,9 +191,17 @@ var LoginPage = (function () {
         this.MyCliente = { email: "", senha: "" };
         this.MyCliente = {};
     }
+    /**
+     * Ao cliente no primeiro acesso
+     * app redireciona para tela de cadastro
+     */
     LoginPage.prototype.openCreateUser = function () {
         this.navCtrl.push('CreateUserPage');
     };
+    /**
+     * Valida dados de acesso
+     * @returns boolean e tratamos as mensagens
+     */
     LoginPage.prototype.validalogin = function () {
         var _this = this;
         this.userProvider.login(this.MyCliente.email, this.MyCliente.senha)
@@ -151,10 +224,10 @@ var LoginPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
             selector: 'page-login',template:/*ion-inline-start:"D:\cordova-apps\ecommercFrontEnd\src\pages\login\login.html"*/'<ion-header>\n<ion-navbar>\n  <ion-title>\n    Ionic Rest Api Example\n  </ion-title>\n</ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n<h1 text-center>Por favor insira seus dados de acesso</h1>\n\n<ion-list>  \n  <ion-item>\n    <ion-label stacked>Email</ion-label>\n    <ion-input type="text" name="email" [(ngModel)]="MyCliente.email"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Senha</ion-label>\n    <ion-input type="password" name="senha" [(ngModel)]="MyCliente.senha"></ion-input>\n  </ion-item>\n</ion-list>\n\n<button ion-button block (click)="validalogin()" color="primary">Entrar</button>\n\n<button ion-button block (click)="openCreateUser()">Primeiro Acesso</button>\n\n</ion-content>'/*ion-inline-end:"D:\cordova-apps\ecommercFrontEnd\src\pages\login\login.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* ToastController */], __WEBPACK_IMPORTED_MODULE_0__providers_users_users__["a" /* UsersProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* ToastController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__providers_users_users__["a" /* UsersProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__providers_users_users__["a" /* UsersProvider */]) === "function" && _d || Object])
     ], LoginPage);
     return LoginPage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=login.js.map
@@ -183,23 +256,23 @@ webpackEmptyAsyncContext.id = 114;
 
 var map = {
 	"../pages/create-user/create-user.module": [
-		286,
+		285,
 		3
 	],
 	"../pages/login/login.module": [
-		287,
+		286,
 		4
 	],
 	"../pages/user-detail/user-detail.module": [
-		288,
+		287,
 		2
 	],
 	"../pages/user-edit/user-edit.module": [
-		289,
+		288,
 		1
 	],
 	"../pages/user-list/user-list.module": [
-		290,
+		289,
 		0
 	]
 };
@@ -262,6 +335,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+/**
+ * Carrega os modulos necessarios para utilizacao do app
+ *
+ *
+ * @author maycon
+ */
 var AppModule = (function () {
     function AppModule() {
     }
@@ -329,12 +408,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+/**
+ * Define qual a pagina root do app
+ *
+ *
+ * @author maycon
+ */
 var MyApp = (function () {
     function MyApp(platform, statusBar, splashScreen) {
-        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_login_login__["a" /* LoginPage */]; //HomePage
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_login_login__["a" /* LoginPage */];
         platform.ready().then(function () {
-            // Okay, so the platform is ready and our plugins are available.
-            // Here you can do any higher level native things you might need.
             statusBar.styleDefault();
             splashScreen.hide();
         });

@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Client } from './../../app/cliente';
 
+/** 
+ * Exibe os dados do cliente
+ * @author maycon
+*/
 @IonicPage()
 @Component({
   selector: 'page-user-detail',

@@ -1,52 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 285:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SearchPipe; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-/**
- * Generated class for the SearchPipe pipe.
- *
- * See https://angular.io/api/core/Pipe for more info on Angular Pipes.
- */
-var SearchPipe = (function () {
-    function SearchPipe() {
-    }
-    /**
-     * Takes a value and makes it lowercase.
-     */
-    SearchPipe.prototype.transform = function (items, terms) {
-        if (!items)
-            return [];
-        if (!terms)
-            return items;
-        terms = terms.toLowerCase();
-        return items.filter(function (it) {
-            return it.nome_cliente.toLowerCase().includes(terms); // only filter country name
-        });
-    };
-    SearchPipe = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Pipe */])({
-            name: 'search',
-        })
-    ], SearchPipe);
-    return SearchPipe;
-}());
-
-//# sourceMappingURL=search.js.map
-
-/***/ }),
-
-/***/ 290:
+/***/ 289:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54,8 +8,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserListPageModule", function() { return UserListPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_list__ = __webpack_require__(294);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pipes_pipes_module__ = __webpack_require__(298);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_list__ = __webpack_require__(293);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pipes_pipes_module__ = __webpack_require__(297);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -87,13 +41,13 @@ var UserListPageModule = (function () {
 
 /***/ }),
 
-/***/ 294:
+/***/ 293:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserListPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_users_users__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_retry__ = __webpack_require__(295);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_retry__ = __webpack_require__(294);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_retry___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_retry__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(51);
@@ -110,6 +64,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+/**
+ * Lista os clientes cadastrados
+ * Podendo fazer o CRUD dos clientes
+ * @author maycon
+*/
 var UserListPage = (function () {
     function UserListPage(navCtrl, navParams, toast, userProvider) {
         this.navCtrl = navCtrl;
@@ -121,9 +80,14 @@ var UserListPage = (function () {
     }
     UserListPage.prototype.ngOnInit = function () {
     };
+    /**depois que a tela carrega, solicita os cliente via endpoint */
     UserListPage.prototype.ionViewDidEnter = function () {
         this.getTodosUsuarios();
     };
+    /**retorna todos clientes, utilizando nosso servico
+     * no subscribe injetamos o resultado do GET no nosso array interno
+     * para popular a lista de cliente
+     */
     UserListPage.prototype.getTodosUsuarios = function () {
         var _this = this;
         this.userProvider.getTodosUsuarios()
@@ -133,6 +97,13 @@ var UserListPage = (function () {
             console.log(err);
         });
     };
+    /**
+     * com a lista preenchida
+     * ao clicar em um cliente
+     * o app redireciona para tela de dados
+     * exibindo os dados do cliente selecionado anteriormente
+     * @param id
+     */
     UserListPage.prototype.openUser = function (id) {
         var _this = this;
         this.userProvider.get(id)
@@ -144,9 +115,17 @@ var UserListPage = (function () {
             _this.toast.create({ message: "Erro ao recuperar usuario. Erro: " + err, position: 'botton', duration: 3000 });
         });
     };
+    /**ao clicar no + app redireciona para tela de cadastrado de usuario */
     UserListPage.prototype.openCreateUser = function () {
         this.navCtrl.push('CreateUserPage');
     };
+    /**
+     * com a lista preenchida
+     * ao clicar em um cliente
+     * e arrastarmos para direita e clicarmos na opcao EDITAR
+     * o app redireciona para a tela de alteracao
+     * @param id
+     */
     UserListPage.prototype.openEditUser = function (id) {
         var _this = this;
         this.userProvider.get(id)
@@ -158,6 +137,13 @@ var UserListPage = (function () {
             _this.toast.create({ message: "Erro ao recuperar usuario. Erro: " + err, position: 'botton', duration: 3000 });
         });
     };
+    /**
+     * com a lista preenchida
+     * ao clicar em um cliente
+     * e arrastarmos para direita e clicarmos na opcao EXCLUIR
+     * o app deleta o cliente
+     * @param id
+     */
     UserListPage.prototype.deleteUser = function (cliente) {
         var _this = this;
         this.userProvider.remove(cliente)
@@ -186,24 +172,24 @@ var UserListPage = (function () {
 
 /***/ }),
 
-/***/ 295:
+/***/ 294:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var Observable_1 = __webpack_require__(7);
-var retry_1 = __webpack_require__(296);
+var retry_1 = __webpack_require__(295);
 Observable_1.Observable.prototype.retry = retry_1.retry;
 //# sourceMappingURL=retry.js.map
 
 /***/ }),
 
-/***/ 296:
+/***/ 295:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var retry_1 = __webpack_require__(297);
+var retry_1 = __webpack_require__(296);
 /**
  * Returns an Observable that mirrors the source Observable with the exception of an `error`. If the source Observable
  * calls `error`, this method will resubscribe to the source Observable for a maximum of `count` resubscriptions (given
@@ -229,7 +215,7 @@ exports.retry = retry;
 
 /***/ }),
 
-/***/ 297:
+/***/ 296:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -301,13 +287,13 @@ var RetrySubscriber = (function (_super) {
 
 /***/ }),
 
-/***/ 298:
+/***/ 297:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PipesModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__search_search__ = __webpack_require__(285);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__search_search__ = __webpack_require__(298);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -316,6 +302,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 
 
+/**
+ * Define qual a implementacao do pipe iremos utilizar no app
+ *
+ * @author maycon
+ */
 var PipesModule = (function () {
     function PipesModule() {
     }
@@ -330,6 +321,52 @@ var PipesModule = (function () {
 }());
 
 //# sourceMappingURL=pipes.module.js.map
+
+/***/ }),
+
+/***/ 298:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SearchPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+/**
+ * Define a implementacao do Pipe (filtro, busca..etc)
+ *
+ * @author maycon
+ */
+var SearchPipe = (function () {
+    function SearchPipe() {
+    }
+    /**
+     * dada uma lista, procura o 'terms'
+     */
+    SearchPipe.prototype.transform = function (items, terms) {
+        if (!items)
+            return [];
+        if (!terms)
+            return items;
+        terms = terms.toLowerCase();
+        return items.filter(function (it) {
+            return it.nome_cliente.toLowerCase().includes(terms); // procurando soment att ->  nome_cliente
+        });
+    };
+    SearchPipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Pipe */])({
+            name: 'search',
+        })
+    ], SearchPipe);
+    return SearchPipe;
+}());
+
+//# sourceMappingURL=search.js.map
 
 /***/ })
 

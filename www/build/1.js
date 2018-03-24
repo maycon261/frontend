@@ -1,6 +1,6 @@
 webpackJsonp([1],{
 
-/***/ 289:
+/***/ 288:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserEditPageModule", function() { return UserEditPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_edit__ = __webpack_require__(293);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_edit__ = __webpack_require__(292);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var UserEditPageModule = (function () {
 
 /***/ }),
 
-/***/ 293:
+/***/ 292:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58,7 +58,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+/**
+ * Classe resposavel em tratar a alteracao de um cliente
+ */
 var UserEditPage = (function () {
+    /**
+     * Ao entrar na dela de alteracao
+     * o app ja pega o id do cliente e carrega os dados no ojb mySingleCliente
+     * @param navCtrl
+     * @param navParams
+     * @param toast
+     * @param userProvider
+     */
     function UserEditPage(navCtrl, navParams, toast, userProvider) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
@@ -68,6 +79,10 @@ var UserEditPage = (function () {
         this.MySingleCliente = {};
         this.MySingleCliente = navParams.get('MySingleCliente');
     }
+    /**
+     * atualiza o cliente na base dados via servico (userprovider)
+     * @returns boolean e tratamos o retorno
+    */
     UserEditPage.prototype.updateClient = function () {
         var _this = this;
         this.userProvider.update(this.MySingleCliente.cpf, this.MySingleCliente.nome_cliente, this.MySingleCliente.endereco, this.MySingleCliente.estado, this.MySingleCliente.municipio, this.MySingleCliente.telefone, this.MySingleCliente.email, this.MySingleCliente.senha)
@@ -89,10 +104,10 @@ var UserEditPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
             selector: 'page-user-edit',template:/*ion-inline-start:"D:\cordova-apps\ecommercFrontEnd\src\pages\user-edit\user-edit.html"*/'<ion-header>\n<ion-navbar>\n  <ion-title>\n    Exemplos de CRUD\n  </ion-title>\n</ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n<h1 text-center>Exemplo de UPDATE</h1>\n\n<ion-list>\n  <ion-item>\n    <ion-label stacked>Nome</ion-label>\n    <ion-input type="text" name="nome" [(ngModel)]="MySingleCliente.nome_cliente"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>CPF</ion-label>\n    <ion-input disabled="true" type="text" name="cpf" [(ngModel)]="MySingleCliente.cpf"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Telefone</ion-label>\n    <ion-input type="text" name="telefone" [(ngModel)]="MySingleCliente.telefone"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Endereço</ion-label>\n    <ion-input type="text" name="endereco" [(ngModel)]="MySingleCliente.endereco"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Estado</ion-label>\n    <ion-input type="text" name="estado" [(ngModel)]="MySingleCliente.estado"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Municipio</ion-label>\n    <ion-input type="text" name="municipio" [(ngModel)]="MySingleCliente.municipio"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Email</ion-label>\n    <ion-input type="text" name="email" [(ngModel)]="MySingleCliente.email"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Senha</ion-label>\n    <ion-input type="password" name="senha" [(ngModel)]="MySingleCliente.senha"></ion-input>\n  </ion-item>\n</ion-list>\n\n<button ion-button block (click)="updateClient()" color="primary">Atualizar Cadastro</button>\n\n</ion-content>'/*ion-inline-end:"D:\cordova-apps\ecommercFrontEnd\src\pages\user-edit\user-edit.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* ToastController */], __WEBPACK_IMPORTED_MODULE_0__providers_users_users__["a" /* UsersProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* ToastController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__providers_users_users__["a" /* UsersProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__providers_users_users__["a" /* UsersProvider */]) === "function" && _d || Object])
     ], UserEditPage);
     return UserEditPage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=user-edit.js.map

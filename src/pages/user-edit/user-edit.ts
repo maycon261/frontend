@@ -3,7 +3,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Client } from './../../app/cliente';
 
-
+/**
+ * Classe resposavel em tratar a alteracao de um cliente
+ */
 @IonicPage()
 @Component({
   selector: 'page-user-edit',
@@ -16,6 +18,14 @@ export class UserEditPage {
 
   MySingleCliente: Client= {};
   
+  /**
+   * Ao entrar na dela de alteracao
+   * o app ja pega o id do cliente e carrega os dados no ojb mySingleCliente
+   * @param navCtrl 
+   * @param navParams 
+   * @param toast 
+   * @param userProvider 
+   */
   constructor(
     public navCtrl: NavController, public navParams: NavParams,
     private toast: ToastController, private userProvider: UsersProvider) {
@@ -24,6 +34,10 @@ export class UserEditPage {
       
     }
   
+    /** 
+     * atualiza o cliente na base dados via servico (userprovider)
+     * @returns boolean e tratamos o retorno
+    */
     updateClient() {
     this.userProvider.update(
           this.MySingleCliente.cpf,this.MySingleCliente.nome_cliente, this.MySingleCliente.endereco,

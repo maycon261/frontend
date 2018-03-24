@@ -1,6 +1,6 @@
 webpackJsonp([2],{
 
-/***/ 288:
+/***/ 287:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserDetailPageModule", function() { return UserDetailPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_detail__ = __webpack_require__(292);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_detail__ = __webpack_require__(291);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var UserDetailPageModule = (function () {
 
 /***/ }),
 
-/***/ 292:
+/***/ 291:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56,6 +56,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+/**
+ * Exibe os dados do cliente
+ * @author maycon
+*/
 var UserDetailPage = (function () {
     function UserDetailPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
@@ -70,9 +74,10 @@ var UserDetailPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-user-detail',template:/*ion-inline-start:"D:\cordova-apps\ecommercFrontEnd\src\pages\user-detail\user-detail.html"*/'<ion-header>\n<ion-navbar>\n  <ion-title>\n    <h1>Meu Perfil</h1>\n  </ion-title>\n</ion-navbar>\n</ion-header>\n\n<ion-content padding>\n<div text-center> \n    <ion-icon name="contact"></ion-icon> \n  <h1>{{ MySingleCliente.nome_cliente }}</h1>\n  <h2>{{ MySingleCliente.cpf }}</h2>\n  <h2>{{ MySingleCliente.email }}</h2>\n  <h2>{{ MySingleCliente.endereco }}</h2>\n  <h2>{{ MySingleCliente.estado }} {{ MySingleCliente.municipio }}</h2>\n  <h2>{{ MySingleCliente.telefone }}</h2>\n  \n</div>\n</ion-content>'/*ion-inline-end:"D:\cordova-apps\ecommercFrontEnd\src\pages\user-detail\user-detail.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object])
     ], UserDetailPage);
     return UserDetailPage;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=user-detail.js.map

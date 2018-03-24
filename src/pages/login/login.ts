@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Client } from './../../app/cliente';
 
+/**Resposavel em validar o login no app */
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -27,10 +28,18 @@ export class LoginPage {
      
   }
 
+  /**
+   * Ao cliente no primeiro acesso
+   * app redireciona para tela de cadastro
+   */
   openCreateUser(){
     this.navCtrl.push('CreateUserPage');
   }
 
+  /**
+   * Valida dados de acesso
+   * @returns boolean e tratamos as mensagens
+   */
   validalogin(){
     this.userProvider.login(this.MyCliente.email,this.MyCliente.senha)
       .subscribe(data =>{

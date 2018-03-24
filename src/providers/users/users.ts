@@ -8,16 +8,29 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 
 
+/**
+ * Representa um servico de consumo HTTP/REST 
+ *
+ * @author maycon
+ */
 @Injectable()
 export class UsersProvider {
 
-	private API_URL ='https://ecommerc-pucminas-rest.herokuapp.com/api/'
+  /**
+   * url do servico rest
+   */
+  private API_URL ='https://ecommerc-pucminas-rest.herokuapp.com/api/'
 
   constructor(public http: HttpClient) {
     
   }
 
-
+/**
+ * metodo cria um usuario e envia o endpoint 
+ * via POST
+ * @author maycon
+ * @returns e tradado no obj interceptador
+ */
   createUser(id: string,  nome_cliente: string,    endereco: string,
     estado: string,    municipio: string,    telefone: string,    email: string,
     senha: string){
@@ -43,6 +56,12 @@ export class UsersProvider {
 
   
 
+  /**
+   * metodo envia os parametros ao endpoint via POST 
+   * @param email 
+   * @param senha
+   * @returns e tradado no obj interceptador 
+   */
   login(email: string,  senha: string){
     let url = this.API_URL + 'login';   
 
@@ -51,7 +70,10 @@ export class UsersProvider {
 }
 
 
-  
+  /**
+   * metodo solicita todos os clientes da base ao endpoint via GET
+   * @returns lista de clientes tradado no obj interceptador 
+   */
   getTodosUsuarios(): Observable<Client[]> {
     let url = this.API_URL + 'clientes';    
     return this.http
@@ -59,13 +81,33 @@ export class UsersProvider {
 } 
 
 
-  get(id: string): Observable<Client> {  
+
+/**
+   * metodo solicita um  cliente da base ao endpoint via GET
+   * @param cpf do cliente
+   * @returns o cliente e tradado no obj interceptador 
+   */    
+get(id: string): Observable<Client> {  
 
     let url = this.API_URL + 'cliente/' + id;    
     return this.http.get<Client>(url);
     
   }
 
+
+ 
+  /**
+   * Insere um cliente via POST
+   * @param cpf 
+   * @param nome_cliente 
+   * @param endereco 
+   * @param estado 
+   * @param municipio 
+   * @param telefone 
+   * @param email 
+   * @param senha 
+   * @returns boolean e tratrado no obj interceptador
+   */
   insert(cpf: string,  nome_cliente: string,    endereco: string,
     estado: string,    municipio: string,    telefone: string,    email: string,
     senha: string): Observable<Boolean> {
@@ -78,6 +120,19 @@ export class UsersProvider {
       
   }
 
+  /**
+   * Atualiza um cliente via PATCH
+   * o endpoint tratara quais os campos que serao atualizado
+   * @param cpf 
+   * @param nome_cliente 
+   * @param endereco 
+   * @param estado 
+   * @param municipio 
+   * @param telefone 
+   * @param email 
+   * @param senha 
+   * @returns boolean e tratrado no obj interceptador
+   */
   update(cpf: string,  nome_cliente: string,    endereco: string,
     estado: string,    municipio: string,    telefone: string,    email: string,
     senha: string) {
@@ -91,6 +146,11 @@ export class UsersProvider {
       
   }
 
+  /**
+   * delete um cliente
+   * @param cliente 
+   * @returns boolean e tratrado no obj interceptador
+   */
   remove(cliente: Client):Observable<Boolean> {
 
       let url = this.API_URL + 'cliente/' + cliente.cpf ;     
@@ -101,6 +161,10 @@ export class UsersProvider {
     
   }
 
+  /**
+   * cria um Header padrao
+   * @param headers 
+   */
   private prepareHeader(headers: HttpHeaders | null): object {
     headers = headers || new HttpHeaders();
 
